@@ -11,7 +11,7 @@
     </div>
     <div>
         <label for="checked_in">Checked In:</label>
-        <input type="checkbox" id="checked_in" v-model="checked_in" required>
+        <input type="checkbox" id="checked_in" v-model="checked_in">
     </div>
     <input type="submit" value="Book" id="book"/>
 </form>
