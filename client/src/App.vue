@@ -2,7 +2,7 @@
   <div>
     <hotel-header/>
     <client-form/>
-    <client-grid/>
+    <client-grid :clients="clients"/>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { eventBus } from '@/main.js';
 import Header from '@/components/Header';
 import ClientForm from '@/components/ClientForm';
 import ClientGrid from '@/components/ClientGrid';
-import ClientService from './services/ClientService.js'
+import ClientService from '@/services/ClientService.js'
 
 export default {
   name:'app',
@@ -30,7 +30,7 @@ export default {
 
     eventBus.$on('booking-added',(payload) => {
       ClientService.postBooking(payload)
-      .then(booking => this.bookings.push(booking));
+      .then(client => this.clients.push(client));
     }),
     eventBus.$on('booking-deleted',(id) => {
       ClientService.deleteBooking(id)
@@ -43,8 +43,8 @@ export default {
   },
   methods:{
     fetchBookings() {
-      ClientService.getBoookings()
-      .then(bookings => this.bookings = bookings);
+      ClientService.getBookings()
+      .then(clients => this.clients = clients);
     }
   }
 

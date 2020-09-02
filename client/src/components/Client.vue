@@ -15,7 +15,7 @@ export default {
     name: 'client',
     props: ['client'],
     methods:{
-        deleteSBooking(id) {
+        deleteBooking(id) {
       eventBus.$emit('booking-deleted', id);
         }
     }

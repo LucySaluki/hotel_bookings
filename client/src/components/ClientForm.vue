@@ -6,11 +6,11 @@
         <input type="text" id="name" v-model="name" required>
     </div>
     <div>
-        <label for="email">Client Name:</label>
+        <label for="email">Client Email:</label>
         <input type="text" id="email" v-model="email" required>
     </div>
     <div>
-        <label for="checked_in">Client Name:</label>
+        <label for="checked_in">Checked In:</label>
         <input type="checkbox" id="checked_in" v-model="checked_in" required>
     </div>
     <input type="submit" value="Book" id="book"/>
