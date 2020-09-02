@@ -2,9 +2,11 @@
     <div class="booking">
         <h3>{{client.name}}</h3>
         <p>{{client.email}}</p>
-        <p>Checked in {{client.checked_in}}</p>
+        <p v-if="client.checked_in">Checked in: &#10004</p>
+        <p v-else>Checked in: &#10008</p>
 
         <button id="delete-button" v-on:click="deleteBooking(client._id)">Delete Booking</button>
+        <button id="toggle-button" v-on:click="toggleCheckedin(client._id)">Toggle Check In</button>
     </div>
 </template>
 
@@ -17,7 +19,11 @@ export default {
     methods:{
         deleteBooking(id) {
       eventBus.$emit('booking-deleted', id);
-        }
+        },
+      
+    toggleCheckedin(id) {
+      eventBus.$emit('client-selected', this.client)
+    }
     }
 }
 </script>
@@ -39,5 +45,9 @@ button {
 }
 #delete-button{
 	background: #F55536;
+}
+
+#toggle-button{
+	background:cornflowerblue;
 }
 </style>

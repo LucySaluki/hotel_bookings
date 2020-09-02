@@ -17,7 +17,8 @@ export default {
   name:'app',
   data() {
     return {
-      clients:[]
+      clients:[],
+
     }
   },
   components: {
@@ -38,6 +39,9 @@ export default {
         const index = this.clients.findIndex(client => client._id === id)
         this.clients.splice(index,1);
       })
+    }),
+    eventBus.$on('client-selected', (client) =>{
+      this.toggleCheckIn(client)
     })
     
   },
@@ -45,6 +49,15 @@ export default {
     fetchBookings() {
       ClientService.getBookings()
       .then(clients => this.clients = clients);
+    },
+    toggleCheckIn(client) {
+      const newClient = {}
+       newClient.checked_in = client.checked_in ? false:true
+       ClientService.updateBooking(client._id, newClient)
+       .then((updateBooking) => {
+         const index = this.clients.findIndex(client => client._id === updateBooking._id);
+         this.clients.splice(index,1, updateBooking);
+       });
     }
   }
 
