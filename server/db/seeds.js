@@ -3,7 +3,7 @@ const { Db } = require("mongodb");
 use hotel_clients;
 db.dropDatabase();
 
-db.hotel_clients.insertMany([
+db.bookings.insertMany([
     {
         name: "Rasputin",
         email: "rasputinthecat@gmail.com",
@@ -15,7 +15,7 @@ db.hotel_clients.insertMany([
         checked_in: false
     },
     {
-        name: "Sunny",
+        name: "Sonny",
         email: "ilikemyeggsmesideup@gmail.com",
         checked_in: false
     }
